@@ -7,27 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style type="text/css">
-        button,
-        div,
-        form,
-        input {
-            margin: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 </head>
 
 <body>
     <div id="buttonDiv"></div>
-    <div id="gifDiv">
-    </div>
+    <div id="gifDiv"></div>
 
     <div id="container">
         <form id="movie-form">
             <label for="user-input">Add a Movie!</label><br><br>
             <input type="text" id="user-input"><br>
 
-            <input id="add-movie" type="submit" value="Add Movie">
+            <input id="add-movie" type="submit" value="Submit">
         </form>
 
 
@@ -66,43 +59,27 @@
             renderButtons();
 
             $("button").on("click", function () {
-
-                // Constructing a queryURL using the animal name
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
                     $(this).attr("data-name") + "&api_key=nHL0xVLalLXQUye3hrBT0kE4T9Gll9G1&limit=10";
 
-                // Performing an AJAX request with the queryURL
+
                 $.ajax({
                     url: queryURL,
                     method: "GET"
                 })
-                    // After data comes back from the request
-                    .then(function (response) {
-                        console.log(queryURL);
 
-                        console.log(response);
-                        // storing the data from the AJAX request in the results variable
+                    .then(function (response) {
                         var results = response.data;
 
-                        // Looping through each result item
+
                         for (var i = 0; i < results.length; i++) {
-
-                            // Creating and storing a div tag
                             var movieDiv = $("<div>");
-
-                            // Creating a paragraph tag with the result item's rating
                             var p = $("<p>").text("Rating: " + results[i].rating);
-
-                            // Creating and storing an image tag
                             var movieImage = $("<img>");
-                            // Setting the src attribute of the image to a property pulled off the result item
-                            movieImage.attr("src", results[i].images.fixed_height.url);
 
-                            // Appending the paragraph and image tag to the animalDiv
+                            movieImage.attr("src", results[i].images.fixed_height.url);
                             movieDiv.append(p);
                             movieDiv.append(movieImage);
-
-                            // Prependng the animalDiv to the HTML page in the "#gifDiv" div
                             $("#gifDiv").prepend(movieDiv);
                         }
                     });

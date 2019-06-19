@@ -1,0 +1,15 @@
+ button,
+        div,
+        form,
+        input {
+            margin: 5px;
+        }
+#movie-form{
+    float: right;
+}
+body{
+    background-color: grey
+}
+a{
+    color: aqua;
+}
