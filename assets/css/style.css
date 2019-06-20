@@ -10,6 +10,9 @@
 body{
     background-color: grey
 }
-a{
-    color: aqua;
+.movie{
+    background-color: #4aaaa5;
+}
+#add-movie{
+    background-color: #4aaaa5;
 }
