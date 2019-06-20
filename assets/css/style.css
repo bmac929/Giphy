@@ -12,7 +12,11 @@ body{
 }
 .movie{
     background-color: #4aaaa5;
+    color: white;
+    font-family: Arial Black, Helvetica, sans-serif;
 }
 #add-movie{
     background-color: #4aaaa5;
+    color: white;
+    font-family: Arial Black, Helvetica, sans-serif;
 }
